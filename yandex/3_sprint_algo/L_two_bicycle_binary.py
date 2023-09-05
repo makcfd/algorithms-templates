@@ -11,6 +11,7 @@ def input():
     global test2
     return test2.pop(0)
 
+
 def bin_search_first_day(arr, left, right, target):
     if left > right:
         return -1
