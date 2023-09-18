@@ -1,6 +1,5 @@
-num = '2'
-num2 = '3'
+arr = [39, 28, 44, 4, 10, 83, 11]
 
 
 
-print(num>num2)
+print(arr.pop())

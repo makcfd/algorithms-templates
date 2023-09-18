@@ -5,7 +5,11 @@
 
 # print(factorial(5))
 
-a = {1, 2}
-a.add(9)
+# a = {1, 2}
+# a.add(9)
 
-print(a)
+# print(a)
+
+
+
+print(5//2)

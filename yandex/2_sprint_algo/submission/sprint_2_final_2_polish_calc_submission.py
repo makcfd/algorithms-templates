@@ -1,6 +1,6 @@
 """
 ID of package:
-90079417
+90773738
 """
 
 
@@ -13,29 +13,29 @@ operations = {
 
 
 class EmptyStackError(Exception):
+    """Exception raised when a Stack has no elements left."""
     pass
 
 
 class Stack:
+    """Stack interface over a list to add and remove elements."""
     def __init__(self):
         self._items = []
-        self.size = 0
 
     def is_empty(self):
-        return self.size == 0
+        return len(self._items) == 0
 
     def push(self, item):
         self._items.append(item)
-        self.size += 1
 
     def pop(self):
         if self.is_empty():
             return EmptyStackError("Stack is empty")
-        self.size -= 1
         return self._items.pop()
 
 
 def evaluate_expression(tokens):
+    """Calculator based on Reversed Polish Notaion."""
     stack = Stack()
     for token in tokens:
         if token in operations:
