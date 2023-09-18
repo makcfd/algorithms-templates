@@ -1,18 +1,23 @@
 """
 ID of package:
-90077606
+90777870
 """
 
 
 class EmptyDequeError(Exception):
+    """Exception raised when a Deque has no elements left."""
     pass
 
 
 class FullDequeError(Exception):
+    """Exception raised when a Deque is full."""
     pass
 
 
 class Deque:
+    """Deque interface over a list to add and remove
+    elements from two sides: back and front.
+    """
 
     def __init__(self, n):
         self._deque = [None] * n
@@ -26,21 +31,19 @@ class Deque:
 
     def push_front(self, x):
         """Filling in from right to left towards the head."""
-        if self.size != self._max_n:
-            self._head = (self._head - 1) % self._max_n
-            self._deque[self._head] = x
-            self.size += 1
-        else:
+        if self.size == self._max_n:
             raise FullDequeError("error")
+        self._head = (self._head - 1) % self._max_n
+        self._deque[self._head] = x
+        self.size += 1
 
     def push_back(self, x):
         """Filling in from left to right towards the tail."""
-        if self.size != self._max_n:
-            self._deque[self._tail] = x
-            self._tail = (self._tail + 1) % self._max_n
-            self.size += 1
-        else:
-            print("error")
+        if self.size == self._max_n:
+            raise FullDequeError("error")
+        self._deque[self._tail] = x
+        self._tail = (self._tail + 1) % self._max_n
+        self.size += 1
 
     def pop_front(self):
         """Classic pop for a queue."""
@@ -71,16 +74,12 @@ class Deque:
 
 if __name__ == "__main__":
     number = int(input())
-    deck_size = int(input())
-    deck = Deque(deck_size)
+    deque_size = int(input())
+    deque = Deque(deque_size)
     for _ in range(number):
-        command = input().split()
+        command, *args = input().split()
         try:
-            if len(command) == 1:
-                result = getattr(deck, command[0])()
-                if result is not None:
-                    print(result)
-            elif len(command) == 2:
-                getattr(deck, command[0])(command[1])
+            (getattr(deque, command)(*args) if args else
+             print(getattr(deque, command)()))
         except (EmptyDequeError, FullDequeError) as error:
             print(error)
