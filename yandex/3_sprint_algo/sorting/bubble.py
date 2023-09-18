@@ -26,7 +26,7 @@ def bubble_sort(array):
             if array[j] > array[j+1]:
                 swapped = True
                 array[j], array[j+1] = array[j+1], array[j]
-        if swapped:å
+        if swapped:
             print(*array)
             counter += 1
             #print(f'step {i}, sorted {i+1} elements: {array}')
@@ -38,4 +38,4 @@ if __name__ == "__main__":
     _ = int(input())
     array = [int(i) for i in input().split()]
     bubble_sort(array)
-    #bubble_sort([1,1,1,1,1])
+
