@@ -1,6 +1,6 @@
 """
 ID of package:
-90773738
+90925352
 """
 
 
@@ -30,7 +30,7 @@ class Stack:
 
     def pop(self):
         if self.is_empty():
-            return EmptyStackError("Stack is empty")
+            raise EmptyStackError("Stack is empty")
         return self._items.pop()
 
 
