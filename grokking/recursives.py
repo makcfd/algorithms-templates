@@ -32,19 +32,20 @@
 
 # binary search recursive
 
-def binary_search_recursive(arr, target):
-    if not arr:
+def binary_search_recursive(arr, low, high, target):
+    if low > high:
         return -1
-    low = 0
-    high = len(arr) - 1
     mid = (low + high) // 2
 
     if arr[mid] == target:
         return mid
     elif arr[mid] > target:
-        return binary_search_recursive(arr[:mid], target)
+        return binary_search_recursive(arr, low, mid - 1, target)
     else:
-        return binary_search_recursive(arr[mid+1:], target)
+        return binary_search_recursive(arr, mid + 1, high, target)
 
 
-print(binary_search_recursive([6, 7, 8, 9, 10], 1))
+arr = [6, 7, 8, 9, 10]
+low = 0
+high = len(arr) - 1
+print(binary_search_recursive(arr, low, high, 7))
